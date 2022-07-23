@@ -7,6 +7,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter/services.dart' show PlatformException, rootBundle;
 import 'package:location/location.dart';
 import 'package:flutter/material.dart';
+import 'package:stream_duration/stream_duration.dart';
 import '../Components/constant.dart';
 
 class HomePageController extends GetxController {
@@ -43,7 +44,7 @@ class HomePageController extends GetxController {
         .listen((Position? position) async {
       if (!startLocationRecorded!) {
         startLatitude = position!.latitude;
-        startLongitude = position!.longitude;
+        startLongitude = position.longitude;
         startLocationRecorded = true;
 
         PolylineResult result = await polylinePoints.getRouteBetweenCoordinates(
@@ -104,6 +105,9 @@ class HomePageController extends GetxController {
 
       update();
       if (speed == 0) {
+        var streamDuration = StreamDuration(Duration(seconds: 2), onDone: () {
+          print('Stream Done 👍');
+        });
         lastLatitude = position.latitude;
         lastLongitude = position.longitude;
         endTime0 = DateTime.now();

@@ -39,17 +39,17 @@ class HomePage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    controller!.speed != null
+                    controller.speed != null
                         ? Text('Speed: ${controller.speed!.toStringAsFixed(0)}',
                             style: TextStyle(fontSize: 50, color: Colors.red))
                         : Text('Speed:'),
-                    controller!.startLatitude != null
+                    controller.startLatitude != null
                         ? Text(
                             'Start Lati: ${controller.startLatitude!.toStringAsFixed(6)}',
                             style: TextStyle(fontSize: 22),
                           )
                         : Text('Start Longitude'),
-                    controller!.startLongitude != null
+                    controller.startLongitude != null
                         ? Text(
                             'Start Long: ${controller.startLongitude!.toStringAsFixed(6)}',
                             style: TextStyle(fontSize: 22),
@@ -61,26 +61,28 @@ class HomePage extends StatelessWidget {
                       '==============================',
                       style: TextStyle(fontSize: 20),
                     ),
-                    controller!.endlatitude != null
+                    controller.endlatitude != null
                         ? Text(
                             'end Lati: ${controller.endlatitude!.toStringAsFixed(6)}',
                             style: TextStyle(fontSize: 20),
                           )
                         : Text('asdfasdfasdf'),
-                    controller!.endlongitude != null
+                    controller.endlongitude != null
                         ? Text(
                             'end Long: ${controller.endlongitude!.toStringAsFixed(6)}',
                             style: TextStyle(fontSize: 20),
                           )
                         : Text('asdfasdfasdf'),
-                    controller!.distance != null
+                    controller.distance != null
                         ? Text(
-                            'Distance : ${controller.distance!.toStringAsFixed(3)}',
+                            'Distance : ${controller.distance.toStringAsFixed(3)}',
                             style: TextStyle(fontSize: 20),
                           )
                         : Text('asdfasdfasdf'),
-                    Text('Time: ${controller.endTime}',
-                        style: TextStyle(fontSize: 22)),
+                    Text(
+                      'Time: ${controller.endTime}',
+                      style: TextStyle(fontSize: 22),
+                    ),
                   ],
                 ),
               ),
