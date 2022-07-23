@@ -33,17 +33,17 @@ class HomePageController extends GetxController {
   Map<PolylineId, Polyline> polylines = {};
   List<LatLng> polylineCoordinates = [];
   double distance = 0;
+
   //===================================================
 
   starTrip() {
     liveLocation!.enableBackgroundMode(enable: true);
-    streamSubscription = liveLocation!.onLocationChanged
-        .listen((LocationData currentLocation) async {
+    StreamSubscription<Position> positionStream = Geolocator.getPositionStream(
+            distanceFilter: 100, forceAndroidLocationManager: true)
+        .listen((Position? position) async {
       if (!startLocationRecorded!) {
-        starTime =
-            DateTime.fromMillisecondsSinceEpoch(currentLocation.time.toInt());
-        startLatitude = currentLocation.latitude;
-        startLongitude = currentLocation.longitude;
+        startLatitude = position!.latitude;
+        startLongitude = position!.longitude;
         startLocationRecorded = true;
 
         PolylineResult result = await polylinePoints.getRouteBetweenCoordinates(
@@ -82,8 +82,8 @@ class HomePageController extends GetxController {
         update();
       }
 
-      endlatitude = currentLocation.latitude;
-      endlongitude = currentLocation.longitude;
+      endlatitude = position!.latitude;
+      endlongitude = position.longitude;
 
       endLocation = LatLng(endlatitude!, endlongitude!);
       markers.add(Marker(
@@ -97,19 +97,20 @@ class HomePageController extends GetxController {
           startLatitude!, startLongitude!, endlatitude!, endlongitude!);
       distance += distanceKm;
       addPolyLine(polylineCoordinates);
-      speed = changeSpeedFromMeterToKM(currentLocation.speed);
+      speed = changeSpeedFromMeterToKM(position.speed);
       LatLng newLatLong = LatLng(endlatitude!, endlongitude!);
       googleMapController!.animateCamera(CameraUpdate.newCameraPosition(
           CameraPosition(target: newLatLong, zoom: 17)));
 
       update();
       if (speed == 0) {
-        lastLatitude = currentLocation.latitude;
-        lastLongitude = currentLocation.longitude;
+        lastLatitude = position.latitude;
+        lastLongitude = position.longitude;
         endTime0 = DateTime.now();
         endTime = endTime0;
       }
     });
+
     update();
   }
 
@@ -130,6 +131,7 @@ class HomePageController extends GetxController {
   @override
   void onInit() {
     starTrip();
+
     print(
         "=============================================== onInit   ========================================");
     super.onInit();
