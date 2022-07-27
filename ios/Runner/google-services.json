@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "688031718290",
+    "project_id": "isoapplication-c76e3",
+    "storage_bucket": "isoapplication-c76e3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:688031718290:android:64cbafaa029361d5c4bf4b",
+        "android_client_info": {
+          "package_name": "com.ama.drivingProgram"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "688031718290-519v2g58rjm0kuvtcns19iq0b2qhkok4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmmG1awyKNeOe-66PsaTyJ3p729w9RBoM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "688031718290-519v2g58rjm0kuvtcns19iq0b2qhkok4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "688031718290-gtp8g9fm0qpqmc722po3c255jsjboet4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ama.iso-driving-program"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:688031718290:android:49ca46fd9f3f4801c4bf4b",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_5"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "688031718290-519v2g58rjm0kuvtcns19iq0b2qhkok4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmmG1awyKNeOe-66PsaTyJ3p729w9RBoM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "688031718290-519v2g58rjm0kuvtcns19iq0b2qhkok4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "688031718290-gtp8g9fm0qpqmc722po3c255jsjboet4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ama.iso-driving-program"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
