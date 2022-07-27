@@ -28,7 +28,7 @@ class HomePageController extends GetxController {
   DateTime? endTime0;
   bool? startLocationRecorded = false;
   bool? endLocationRecorded = false;
-  Set<Marker> markers = Set(); //markers for google map
+  Set<Marker> markers = Set();
   PolylinePoints polylinePoints = PolylinePoints();
   String googleAPiKey = googleMapKey;
   Map<PolylineId, Polyline> polylines = {};
@@ -40,9 +40,12 @@ class HomePageController extends GetxController {
   starTrip() {
     liveLocation!.enableBackgroundMode(enable: true);
     StreamSubscription<Position> positionStream = Geolocator.getPositionStream(
-            distanceFilter: 100, forceAndroidLocationManager: true)
+            intervalDuration: Duration(milliseconds: 10),
+            distanceFilter: 100,
+            forceAndroidLocationManager: true)
         .listen((Position? position) async {
       if (!startLocationRecorded!) {
+        starTime = DateTime.now();
         startLatitude = position!.latitude;
         startLongitude = position.longitude;
         startLocationRecorded = true;
@@ -66,7 +69,7 @@ class HomePageController extends GetxController {
           //add start location marker
           markerId: MarkerId(startLocation.toString()),
           position: startLocation!, //position of marker
-          // icon: BitmapDescriptor.defaultMarker, //Icon for Marker
+          icon: BitmapDescriptor.defaultMarker, //Icon for Marker
         ));
         update();
       }
@@ -91,12 +94,19 @@ class HomePageController extends GetxController {
         //add distination location marker
         markerId: MarkerId(endLocation.toString()),
         position: endLocation!, //position of marker
-        // icon: BitmapDescriptor.defaultMarker, //Icon for Marker
+        icon: BitmapDescriptor.defaultMarker, //Icon for Marker
       ));
 
-      double distanceKm = calculateDistance(
+      // double distanceKm = calculateDistance(
+      //     startLatitude!, startLongitude!, endlatitude!, endlongitude!);
+
+      var distancebetween = Geolocator.distanceBetween(
           startLatitude!, startLongitude!, endlatitude!, endlongitude!);
-      distance += distanceKm;
+
+      changeDistancFromMeterToKM(distancebetween);
+      print(distancebetween);
+
+      distance += distancebetween;
       addPolyLine(polylineCoordinates);
       speed = changeSpeedFromMeterToKM(position.speed);
       LatLng newLatLong = LatLng(endlatitude!, endlongitude!);
@@ -105,7 +115,7 @@ class HomePageController extends GetxController {
 
       update();
       if (speed == 0) {
-        var streamDuration = StreamDuration(Duration(seconds: 2), onDone: () {
+        var streamDuration = StreamDuration(Duration(seconds: 1), onDone: () {
           print('Stream Done 👍');
         });
         lastLatitude = position.latitude;
@@ -159,6 +169,7 @@ class HomePageController extends GetxController {
 
   getCurrentLocation() async {
     try {
+      liveLocation!.enableBackgroundMode(enable: true);
       Icon icon = await getMarker();
       var location = await liveLocation!.getLocation();
 

@@ -37,7 +37,6 @@ dependencies:
   firebase_auth: ^3.4.1
   google_fonts:
   firebase_core: ^1.19.1
-  cloud_firestore: ^3.2.1
   intl: ^0.17.0
   firebase_storage: ^10.3.2
   image_picker: ^0.8.5+3
@@ -54,6 +53,8 @@ dependencies:
   stop_watch_timer: ^1.5.0
   timer_count_down: ^2.2.1
   stream_duration: ^2.0.4
+  cloud_firestore: ^3.2.1
+
 
 dev_dependencies:
   flutter_test:

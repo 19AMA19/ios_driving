@@ -6,10 +6,8 @@ import 'package:location/location.dart';
 import '../Components/constant.dart';
 import '../Controllers/home_page_controller.dart';
 
-class HomePage extends StatelessWidget {
+class HomePagea extends StatelessWidget {
   Location location = new Location();
-
-  Completer<GoogleMapController> _controller = Completer();
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +26,7 @@ class HomePage extends StatelessWidget {
                   initialCameraPosition: cameraPosition,
                   mapType: MapType.hybrid,
                   myLocationEnabled: true,
-                  zoomControlsEnabled: true,
+                  zoomControlsEnabled: false,
                   onMapCreated: (GoogleMapController gmc) {
                     controller.onMapCreated(gmc);
                   },
@@ -40,9 +38,10 @@ class HomePage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     controller.speed != null
-                        ? Text('Speed: ${controller.speed!.toStringAsFixed(0)}',
+                        ? Text('Speed:${controller.speed!.toStringAsFixed(0)}',
                             style: TextStyle(fontSize: 50, color: Colors.red))
-                        : Text('Speed:'),
+                        : Text('Speed:',
+                            style: TextStyle(fontSize: 50, color: Colors.red)),
                     controller.startLatitude != null
                         ? Text(
                             'Start Lati: ${controller.startLatitude!.toStringAsFixed(6)}',
@@ -56,32 +55,32 @@ class HomePage extends StatelessWidget {
                           )
                         : Text('Time'),
                     Text('Time: ${controller.starTime}',
-                        style: TextStyle(fontSize: 22)),
+                        style: TextStyle(fontSize: 15)),
                     Text(
-                      '==============================',
+                      '=====================',
                       style: TextStyle(fontSize: 20),
                     ),
                     controller.endlatitude != null
                         ? Text(
-                            'end Lati: ${controller.endlatitude!.toStringAsFixed(6)}',
+                            'endlatitude: ${controller.endlatitude!.toStringAsFixed(6)}',
                             style: TextStyle(fontSize: 20),
                           )
-                        : Text('asdfasdfasdf'),
+                        : Text('end Long', style: TextStyle(fontSize: 22)),
                     controller.endlongitude != null
                         ? Text(
                             'end Long: ${controller.endlongitude!.toStringAsFixed(6)}',
                             style: TextStyle(fontSize: 20),
                           )
-                        : Text('asdfasdfasdf'),
+                        : Text('Distance', style: TextStyle(fontSize: 22)),
                     controller.distance != null
                         ? Text(
                             'Distance : ${controller.distance.toStringAsFixed(3)}',
                             style: TextStyle(fontSize: 20),
                           )
-                        : Text('asdfasdfasdf'),
+                        : Text('Time', style: TextStyle(fontSize: 22)),
                     Text(
                       'Time: ${controller.endTime}',
-                      style: TextStyle(fontSize: 22),
+                      style: TextStyle(fontSize: 15),
                     ),
                   ],
                 ),
