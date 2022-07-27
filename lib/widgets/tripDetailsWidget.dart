@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
-class TripDetails extends StatelessWidget {
+class TripDetailsWidget extends StatelessWidget {
   final String image;
   final String driverName;
-  const TripDetails({
+  const TripDetailsWidget({
     Key? key,
     required this.image,
     required this.driverName,

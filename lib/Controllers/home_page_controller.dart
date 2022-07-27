@@ -147,14 +147,14 @@ class HomePageController extends GetxController {
     starTrip();
 
     print(
-        "=============================================== onInit   ========================================");
+        " =============== onInit   ===============  ");
     super.onInit();
   }
 
   @override
   void onReady() {
     print(
-        "=============================================== onReady   ========================================");
+        " ===============  onReady   ===============  ");
     super.onReady();
   }
 

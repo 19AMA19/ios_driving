@@ -685,6 +685,9 @@ PODS:
     - PromisesObjC (< 3.0, >= 1.2)
   - GoogleMaps (6.2.1):
     - GoogleMaps/Maps (= 6.2.1)
+  - GoogleMaps/Base (6.2.1)
+  - GoogleMaps/Maps (6.2.1):
+    - GoogleMaps/Base
   - GoogleUtilities/AppDelegateSwizzler (7.7.0):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -872,6 +875,6 @@ SPEC CHECKSUMS:
   path_provider_ios: 14f3d2fd28c4fdb42f44e0f751d12861c43cee02
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
 
-PODFILE CHECKSUM: 047e6ea6a69c6eb899c39524ee84628f492c8475
+PODFILE CHECKSUM: 6f0f19fc9b4cfdd8948b2edf858c7a2b954f2a94
 
 COCOAPODS: 1.11.3

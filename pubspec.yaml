@@ -54,6 +54,7 @@ dependencies:
   timer_count_down: ^2.2.1
   stream_duration: ^2.0.4
   cloud_firestore: ^3.2.1
+  provider: ^6.0.3
 
 
 dev_dependencies:
